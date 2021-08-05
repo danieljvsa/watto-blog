@@ -1,0 +1,27 @@
+:root {
+  --blue: #3EA1DB;
+  --blue-dark: #574AE8;
+  --white: #FFF;
+
+  --title: #313131;
+  --text: #B6B6B6;
+
+  --input-back: rgba(255, 255, 255, 0.2);
+  
+  --linear: linear-gradient(90deg, #574AE8 0%, #3EA1DB 100%);
+  --main: #F3F5F7;
+
+  --dark: #1a202c;
+  --input: #e8e8e8;
+  --green: #04c35c;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: var(--main);
+}
