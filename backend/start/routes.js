@@ -22,6 +22,8 @@ Route.post('/authenticate', 'AuthController.authenticate')
 Route.put('/users/:id', 'AuthController.update').middleware('auth')
 Route.delete('/users/:id', 'AuthController.destroy').middleware('auth')
 
+Route.get('/posts/', 'PostController.index')
+Route.get('/posts/:id', 'PostController.show')
 Route.group(() => {
-  Route.resource('posts', 'PostController').apiOnly()
+  Route.resource('posts', 'PostController').apiOnly().except(['index', 'show'])
 }).middleware('auth')
