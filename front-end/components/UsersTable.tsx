@@ -15,18 +15,19 @@ interface User {
 }
 
 export function UsersTable(){
-    const {currentUser} = useContext(AuthContext)
+    const {username, activeCreateUserModal, destroy, activeUpdateUserModal} = useContext(AuthContext)
     const [users, setUsers] = useState<User[]>([])
 
     useEffect(() => {
         api.get('/users').then(res => {
             setUsers(res.data)
         })
-    }, [])
+    }, [users])
 
     return(
         <main className={styles.main}>
-            <h3>Bem vindo, {currentUser} </h3>
+            <h3>Bem vindo, {username} </h3>
+            <button onClick={activeCreateUserModal}>+ Novo Utilizador</button>
             <table className={styles.table}>
                 <thead>
                     <tr className={styles.tableHeader}>
@@ -41,6 +42,8 @@ export function UsersTable(){
                             <td>{user.username}</td>
                             <td>{user.email}</td>
                             <td>{(user.IsAdministrator == 0) ? ('Não') : ('Sim') }</td>
+                            <td onClick={() => destroy(user.id)}>-</td>
+                            <td onClick={() => (activeUpdateUserModal(user))}>&gt;</td>
                         </tr>
                     ))}
                 </tbody>
