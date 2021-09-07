@@ -2,9 +2,10 @@ import { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import styles from '../styles/components/LevelUpModal.module.css'
 import { useForm } from 'react-hook-form'
+import { PostsContext } from '../contexts/PostsContext'
 
-export function UpdateUserModal(){
-    const {closeUpdateUserModal, update, currentUser} = useContext(AuthContext)
+export function UpdatePostModal(){
+    const {update, currentPost, closeUpdatePostModal} = useContext(PostsContext)
     const { register, handleSubmit } = useForm();
 
     async function handleSignIn(data: any) {
@@ -15,20 +16,22 @@ export function UpdateUserModal(){
         <div className={styles.overlay}>
             <form onSubmit={handleSubmit(handleSignIn)}>
                 <label>
-                    Username
-                    <input type="text" defaultValue={currentUser?.username} {...register('username')}/>
+                    Image
+                    <input type="text" defaultValue={currentPost?.image} {...register('image')}/>
                 </label>
                 <label>
-                    Email 
-                    <input type="email" defaultValue={currentUser?.email} {...register('email')}/>
+                    Titulo 
+                    <input type="text" defaultValue={currentPost?.title} {...register('title')}/>
                 </label>
                 <label>
-                    <input type="checkbox" defaultValue={currentUser?.IsAdministrator} {...register('IsAdministrator')}/>
-                    Administrador
+                    Post
+                    <input type="textarea" defaultValue={currentPost?.post} {...register('post')}/>
                 </label>
                 <button type="submit">Atualizar</button>
-                <button onClick={closeUpdateUserModal}>Cancelar</button>
+                <button onClick={closeUpdatePostModal}>Cancelar</button>
             </form>
         </div>
     )
 }
+
+

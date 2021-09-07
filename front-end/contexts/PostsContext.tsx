@@ -2,6 +2,14 @@ import { parseCookies } from "nookies";
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../services/axios";
 
+interface User {
+    id: number,
+    username: string,
+    password: string,
+    email: string,
+    IsAdministrator: number
+}
+
 interface updateData {
     title: string,
     image: string,
@@ -18,11 +26,20 @@ interface Post {
     id: number,
     image: string,
     title: string,
-    post: string
+    post: string,
+    user: User
 }
 
 interface PostsContextType {
-    posts: Post[]
+    posts: Post[],
+    create: (data: createData) => void,
+    destroy: (id: number) => void,
+    update: (user: updateData) => void,
+    closeCreatePostModal: () => void,
+    activeCreatePostModal: () => void,
+    closeUpdatePostModal: () => void,
+    activeUpdatePostModal: (post: Post) => void,
+    currentPost: Post | null
 }
 
 export const PostsContext = createContext({} as PostsContextType)
@@ -31,6 +48,9 @@ export function PostsProvider({children}: any) {
     const [posts, setPosts]  = useState([])
     const [currentPost, setCurrentPost] = useState<Post | null>(null)
     const { 'wattouser-username': IsAdministrator } = parseCookies()
+    const [isCreatePostModal, setIsCreatePostModal] = useState(false)
+    const [isUpdatePostModal, setIsUpdatePostModal] = useState(false)
+    
 
     useEffect(() => {
         api.get(`/posts`).then(
@@ -71,8 +91,29 @@ export function PostsProvider({children}: any) {
         }
     }
 
+    function putPost(post: Post){
+        setCurrentPost(post)
+    }
+
+    function closeCreatePostModal(){
+        setIsCreatePostModal(false)
+    }
+
+    function activeCreatePostModal(){
+        setIsCreatePostModal(true)
+    }
+
+    function closeUpdatePostModal(){
+        setIsUpdatePostModal(false)
+    }
+
+    function activeUpdatePostModal(post: Post){
+        putPost(post)
+        setIsUpdatePostModal(true)
+    }
+
     return (
-        <PostsContext.Provider value={{posts}}>
+        <PostsContext.Provider value={{posts, create, destroy, update, closeCreatePostModal, closeUpdatePostModal, activeCreatePostModal, activeUpdatePostModal, currentPost}}>
             {children}
         </PostsContext.Provider>
     )
