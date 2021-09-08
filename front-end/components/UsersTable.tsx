@@ -15,14 +15,7 @@ interface User {
 }
 
 export function UsersTable(){
-    const {username, activeCreateUserModal, destroy, activeUpdateUserModal} = useContext(AuthContext)
-    const [users, setUsers] = useState<User[]>([])
-
-    useEffect(() => {
-        api.get('/users').then(res => {
-            setUsers(res.data)
-        })
-    }, [users])
+    const {username, activeCreateUserModal, destroy, activeUpdateUserModal, users} = useContext(AuthContext)
 
     return(
         <main className={styles.main}>

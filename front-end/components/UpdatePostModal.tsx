@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
-import styles from '../styles/components/LevelUpModal.module.css'
+import styles from '../styles/components/UpdatePostModal.module.scss'
 import { useForm } from 'react-hook-form'
 import { PostsContext } from '../contexts/PostsContext'
 
@@ -10,11 +10,12 @@ export function UpdatePostModal(){
 
     async function handleSignIn(data: any) {
         await update(data)
+        closeUpdatePostModal()
     }
 
     return (
         <div className={styles.overlay}>
-            <form onSubmit={handleSubmit(handleSignIn)}>
+            <form onSubmit={handleSubmit(handleSignIn)} className={styles.container}>
                 <label>
                     Image
                     <input type="text" defaultValue={currentPost?.image} {...register('image')}/>

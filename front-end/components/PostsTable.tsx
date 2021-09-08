@@ -3,15 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import { PostsContext } from '../contexts/PostsContext'
 import { api } from '../services/axios'
-import styles from '../styles/Components/UsersTable.module.scss'
-
-interface User {
-    id: number,
-    username: string,
-    password: string,
-    email: string,
-    IsAdministrator: number
-}
+import styles from '../styles/Components/PostsTable.module.scss'
 
 export function PostsTable(){
     const {posts, destroy, activeCreatePostModal, activeUpdatePostModal} = useContext(PostsContext)

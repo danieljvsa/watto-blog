@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
-import styles from '../styles/components/LevelUpModal.module.css'
+import styles from '../styles/components/UpdateUserModal.module.scss'
 import { useForm } from 'react-hook-form'
 
 export function UpdateUserModal(){
@@ -9,11 +9,12 @@ export function UpdateUserModal(){
 
     async function handleSignIn(data: any) {
         await update(data)
+        closeUpdateUserModal()
     }
 
     return (
         <div className={styles.overlay}>
-            <form onSubmit={handleSubmit(handleSignIn)}>
+            <form onSubmit={handleSubmit(handleSignIn)} className={styles.container}>
                 <label>
                     Username
                     <input type="text" defaultValue={currentUser?.username} {...register('username')}/>
@@ -23,7 +24,12 @@ export function UpdateUserModal(){
                     <input type="email" defaultValue={currentUser?.email} {...register('email')}/>
                 </label>
                 <label>
-                    <input type="checkbox" defaultValue={currentUser?.IsAdministrator} {...register('IsAdministrator')}/>
+                    {
+                    (currentUser?.IsAdministrator == 1) 
+                    ? 
+                    (<input type="checkbox" checked {...register('IsAdministrator')}/>) 
+                    : 
+                    (<input type="checkbox" {...register('IsAdministrator')}/>)}
                     Administrador
                 </label>
                 <button type="submit">Atualizar</button>

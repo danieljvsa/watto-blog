@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
-import styles from '../styles/components/LevelUpModal.module.css'
+import styles from '../styles/components/CreateUserModal.module.scss'
 import { useForm } from 'react-hook-form'
 
 export function CreateUserModal(){
@@ -9,11 +9,12 @@ export function CreateUserModal(){
 
     async function handleSignIn(data: any) {
         await create(data)
+        closeCreateUserModal()
     }
 
     return (
         <div className={styles.overlay}>
-            <form onSubmit={handleSubmit(handleSignIn)}>
+            <form onSubmit={handleSubmit(handleSignIn)} className={styles.container}>
                 <label>
                     Username
                     <input type="text" placeholder="username" {...register('username')}/>

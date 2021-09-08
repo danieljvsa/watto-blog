@@ -17,7 +17,7 @@
 const Route = use('Route')
 
 Route.post('/register', 'AuthController.register').middleware('auth')
-Route.get('/users', 'AuthController.index').middleware('auth')
+Route.get('/users', 'AuthController.index')
 Route.post('/authenticate', 'AuthController.authenticate')
 Route.put('/users/:id', 'AuthController.update').middleware('auth')
 Route.delete('/users/:id', 'AuthController.destroy').middleware('auth')
