@@ -16,20 +16,22 @@ export function UpdatePostModal(){
     return (
         <div className={styles.overlay}>
             <form onSubmit={handleSubmit(handleSignIn)} className={styles.container}>
-                <label>
-                    Image
+                <label className={styles.input}>
+                    Image <br />
                     <input type="text" defaultValue={currentPost?.image} {...register('image')}/>
-                </label>
-                <label>
-                    Titulo 
+                </label> <br />
+                <label className={styles.input}>
+                    Titulo <br />
                     <input type="text" defaultValue={currentPost?.title} {...register('title')}/>
-                </label>
-                <label>
-                    Post
-                    <input type="textarea" defaultValue={currentPost?.post} {...register('post')}/>
-                </label>
-                <button type="submit">Atualizar</button>
-                <button onClick={closeUpdatePostModal}>Cancelar</button>
+                </label> <br />
+                <label className={styles.inputAd}>
+                    Post <br />
+                    <textarea defaultValue={currentPost?.post} {...register('post')} rows={9} cols={30}/>
+                </label> <br />
+                <div className={styles.buttonDiv}>
+                    <button type="submit">Atualizar</button>
+                    <button onClick={closeUpdatePostModal}>Cancelar</button>
+                </div>
             </form>
         </div>
     )

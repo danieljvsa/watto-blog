@@ -3,15 +3,35 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 20px;
+    margin: 3rem 0 0 0;
 
-    h3{
-        font-family: 'Lexend Deca', sans-serif;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 30px;
-        cursor: pointer;
+    .main_header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
         margin-bottom: 20px;
+
+        h3{
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 24px;
+            cursor: pointer;
+            margin: 0 15rem 0 0;
+        }
+        
+        button{
+            background: transparent;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 8px;
+            color: green;
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            cursor: pointer;
+        }
     }
 
     .table{

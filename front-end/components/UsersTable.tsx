@@ -19,8 +19,10 @@ export function UsersTable(){
 
     return(
         <main className={styles.main}>
-            <h3>Bem vindo, {username} </h3>
-            <button onClick={activeCreateUserModal}>+ Novo Utilizador</button>
+            <div className={styles.main_header}>
+                <h3>Bem vindo, {username} </h3>
+                <button onClick={activeCreateUserModal}>+ Novo Utilizador</button>
+            </div>
             <table className={styles.table}>
                 <thead>
                     <tr className={styles.tableHeader}>

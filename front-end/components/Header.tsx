@@ -7,7 +7,7 @@ export function Header(){
         <header className={styles.header}>
             <div className={styles.logo}>
                 <p>Watto</p>
-                <Link href="/"><a>blog</a></Link>
+                <Link href="/login"><a>Login</a></Link>
             </div>
             <div className={styles.search}>
                 <input type="search" placeholder="Pesquisar no blog"/>

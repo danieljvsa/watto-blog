@@ -19,6 +19,61 @@
         box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
         text-align: center;
         position: relative;
+
+
+        .input{
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+
+
+            input{
+                border-radius: 5px;
+                padding: 0.5rem 0.8rem;
+                border: none;
+                border: 1px solid var(--input);
+                font-size: 15px;
+                outline: none;
+                color: var(--dark);
+                margin: 0.8rem 0;
+            }
+        }
+
+        .inputAd{
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+
+            textarea{
+                border-radius: 5px;
+                padding: 0.5rem 0.8rem;
+                height: 8rem;
+                border: none;
+                border: 1px solid var(--input);
+                font-size: 15px;
+                outline: none;
+                color: var(--dark);
+                margin-top: 0.5rem;
+            }
+        }
+        
+        .buttonDiv{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem auto;
+
+            button{
+                background: var(--text);
+                border-radius: 5px;
+                padding: 0.5rem 0.8rem;
+                border: none;
+                border: 1px solid var(--input);
+                margin-right: 0.3rem;
+                cursor: pointer;
+            }
+        }
     }
 }
-

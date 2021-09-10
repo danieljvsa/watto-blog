@@ -10,7 +10,9 @@ export function PostsTable(){
 
     return(
         <main className={styles.main}>
-            <button onClick={activeCreatePostModal}>+ Novo Post</button>
+            <div className={styles.main_header}>
+                <button onClick={activeCreatePostModal}>+ Novo Post</button>
+            </div>
             <table className={styles.table}>
                 <thead>
                     <tr className={styles.tableHeader}>

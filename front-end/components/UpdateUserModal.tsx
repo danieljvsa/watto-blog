@@ -15,25 +15,27 @@ export function UpdateUserModal(){
     return (
         <div className={styles.overlay}>
             <form onSubmit={handleSubmit(handleSignIn)} className={styles.container}>
-                <label>
-                    Username
+                <label className={styles.input}>
+                    Username <br />
                     <input type="text" defaultValue={currentUser?.username} {...register('username')}/>
-                </label>
-                <label>
-                    Email 
+                </label> <br />
+                <label className={styles.input}>
+                    Email <br />
                     <input type="email" defaultValue={currentUser?.email} {...register('email')}/>
-                </label>
-                <label>
+                </label> <br />
+                <label className={styles.inputAd}>
                     {
                     (currentUser?.IsAdministrator == 1) 
                     ? 
                     (<input type="checkbox" checked {...register('IsAdministrator')}/>) 
                     : 
-                    (<input type="checkbox" {...register('IsAdministrator')}/>)}
+                    (<input type="checkbox" {...register('IsAdministrator')}/>)} 
                     Administrador
-                </label>
-                <button type="submit">Atualizar</button>
-                <button onClick={closeUpdateUserModal}>Cancelar</button>
+                </label><br />
+                <div className={styles.buttonDiv}>
+                    <button type="submit">Atualizar</button>
+                    <button onClick={closeUpdateUserModal}>Cancelar</button>
+                </div>
             </form>
         </div>
     )
