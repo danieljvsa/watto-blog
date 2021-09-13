@@ -38,6 +38,7 @@
         background-color: white;
         border-radius: 8px;
         text-align: center;
+        overflow: hidden;
 
         .tableHeader{
 
@@ -68,6 +69,35 @@
             .edit{
                 color: #3F9EDB;
                 cursor: pointer;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .main_header{
+        h3{
+            font-size: 18px !important; 
+            margin-right: 4rem !important;
+        }
+        button{
+            font-size: 14px !important;
+        }
+    }
+    .table{
+        overflow: hidden !important;
+        margin: 0 1rem !important;
+        .tableHeader{
+            th{
+                padding: 1rem 0.5rem !important;
+                font-size: 14px !important;
+            }
+        }
+        .tableBody{
+            td{
+                padding: 1rem 0.5rem !important;
+                font-size: 12px !important;
+                max-width: 50px !important;
             }
         }
     }

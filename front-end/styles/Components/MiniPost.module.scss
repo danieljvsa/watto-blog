@@ -63,3 +63,25 @@
         }
     }
 }
+
+@media (max-width: 768px){
+    .header-post{
+        span{
+            font-size: 14px !important;
+        }
+        img{
+            width: 20px !important;
+            height: 20px !important;
+        }
+    }
+
+    .body-post{
+        h3{
+            font-size: 24px !important;
+        }
+
+        p{
+            font-size: 16px !important;
+        }
+    }
+}

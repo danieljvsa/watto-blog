@@ -31,14 +31,10 @@ interface Post {
     post: string,
     created_at: string,
     user: User,
-    postDate: PostDate
+    isLike: boolean
 }
 
-interface PostDate{
-    day: number,
-    month: number,
-    year: number
-}
+
 
 interface PostsContextType {
     posts: Post[],

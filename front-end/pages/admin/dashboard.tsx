@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next'
+import Head from 'next/head'
 import { parseCookies } from 'nookies'
 import React, { useContext, useState } from 'react'
 import { HeaderAdmin } from '../../components/HeaderAdmin'
@@ -12,6 +13,9 @@ export default function Home() {
   const {isPosts} = useContext(AuthContext)
   return (
     <div className={styles.homepage}>
+      <Head>
+        <title>Dashboard | Watto</title>
+      </Head>
       <HeaderAdmin />
       <main className={styles.main}> 
         {(isPosts) ? (

@@ -29,11 +29,7 @@ export function LoginForm(){
                     <input type="password" placeholder="*******" {...register('password')} /> <br />
                 </label>
                 <div className={styles.button_div}>
-                    <button type="submit">
-                        <Link href="/login">
-                            <a>Entrar</a>
-                        </Link>
-                    </button>
+                    <button type="submit">Entrar</button>
                 </div>
             </form>
         </div>
