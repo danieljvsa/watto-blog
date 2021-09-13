@@ -29,7 +29,15 @@ interface Post {
     image: string,
     title: string,
     post: string,
-    user: User
+    created_at: string,
+    user: User,
+    postDate: PostDate
+}
+
+interface PostDate{
+    day: number,
+    month: number,
+    year: number
 }
 
 interface PostsContextType {
@@ -41,7 +49,12 @@ interface PostsContextType {
     activeCreatePostModal: () => void,
     closeUpdatePostModal: () => void,
     activeUpdatePostModal: (post: Post) => void,
-    currentPost: Post | null
+    currentPost: Post | null,
+    isLike: boolean,
+    activeIsLike: () => void,
+    value: boolean,
+    search: (data: string) => Promise<void>,
+    postTitle: string
 }
 
 export const PostsContext = createContext({} as PostsContextType)
@@ -52,12 +65,17 @@ export function PostsProvider({children}: any) {
     const { 'watto-uservalue': IsAdministrator } = parseCookies()
     const [isCreatePostModal, setIsCreatePostModal] = useState(false)
     const [isUpdatePostModal, setIsUpdatePostModal] = useState(false)
+    const [isLike, setIsLike] = useState(false)
+    const [postTitle, setPostTitle] = useState('')
+    const [value, setValue] = useState(false)
+    
     
 
     useEffect(() => {
         api.get(`/posts`).then(
             res => {
                 setPosts(res.data)
+                
             }
         )
     }, [posts])
@@ -65,12 +83,9 @@ export function PostsProvider({children}: any) {
     async function update({title, post, image}: updateData) {
         try {
             if (currentPost != null) {
-                if (IsAdministrator == '1') {
-                    await api.put(`/posts/${currentPost.id}`, {title, post, image})
-                }
-                else{
-                    console.log('You dont have permission')
-                }
+                
+                await api.put(`/posts/${currentPost.id}`, {title, post, image})
+                
             }
         } catch (error) {
             console.log(error)   
@@ -91,13 +106,8 @@ export function PostsProvider({children}: any) {
         }
     }
 
-    async function create({title, image, post}: createData) {
-        if (IsAdministrator == '1') {
-            await api.post(`/posts`, {title, image, post})
-        }
-        else{
-            console.log('You dont have permission')
-        }
+    async function create({title, image, post}: createData) {   
+        await api.post(`/posts`, {title, image, post})
     }
 
     function putPost(post: Post){
@@ -121,8 +131,25 @@ export function PostsProvider({children}: any) {
         setIsUpdatePostModal(true)
     }
 
+    function activeIsLike(){
+        if(isLike == false){
+            setIsLike(true)
+        }else{
+            setIsLike(false)
+        }
+    }
+
+    async function search(data: any) {
+        if (data.value == "" || data.value == undefined) {
+            setValue(false)
+        }else{
+            setValue(true)
+            setPostTitle(data.value)
+        }
+    }
+
     return (
-        <PostsContext.Provider value={{posts, create, destroy, update, closeCreatePostModal, closeUpdatePostModal, activeCreatePostModal, activeUpdatePostModal, currentPost}}>
+        <PostsContext.Provider value={{search ,value ,postTitle ,posts, create, destroy, update, closeCreatePostModal, closeUpdatePostModal, activeCreatePostModal, activeUpdatePostModal, currentPost, isLike, activeIsLike}}>
             {children}
             {isCreatePostModal && <CreatePostModal />}
             {isUpdatePostModal && <UpdatePostModal />}

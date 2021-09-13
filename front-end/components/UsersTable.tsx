@@ -1,5 +1,8 @@
 
 
+import { faEdit } from '@fortawesome/free-regular-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { parseCookies } from 'nookies'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
@@ -37,8 +40,8 @@ export function UsersTable(){
                             <td>{user.username}</td>
                             <td>{user.email}</td>
                             <td>{(user.IsAdministrator == 0) ? ('Não') : ('Sim') }</td>
-                            <td onClick={() => destroy(user.id)}>-</td>
-                            <td onClick={() => (activeUpdateUserModal(user))}>&gt;</td>
+                            <td onClick={() => destroy(user.id)} className={styles.delete}><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon></td>
+                            <td onClick={() => (activeUpdateUserModal(user))} className={styles.edit}><FontAwesomeIcon icon={faEdit}></FontAwesomeIcon></td>
                         </tr>
                     ))}
                 </tbody>

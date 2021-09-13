@@ -42,13 +42,33 @@
 
         .tableBody{
 
-            td{
-                padding: 20px 30px;
-                font-family: 'Lexend Deca', sans-serif;
-                font-weight: 400;
-                font-size: 14px;
-                line-height: 19px;
-            }
+            
+                td{
+                    padding: 20px 30px;
+                    font-family: 'Lexend Deca', sans-serif;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 19px;
+                   
+                    max-width: 200px;
+    
+                    p{
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+                }
+
+                .delete{
+                    color: rgb(212, 17, 3);
+                    cursor: pointer;
+                }
+    
+                .edit{
+                    color: #3F9EDB;
+                    cursor: pointer;
+                }
+            
         }
     }
 }

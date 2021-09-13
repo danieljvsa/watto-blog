@@ -59,6 +59,16 @@
                 font-size: 14px;
                 line-height: 19px;
             }
+
+            .delete{
+                color: rgb(212, 17, 3);
+                cursor: pointer;
+            }
+
+            .edit{
+                color: #3F9EDB;
+                cursor: pointer;
+            }
         }
     }
 }

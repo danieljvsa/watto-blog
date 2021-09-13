@@ -9,7 +9,6 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.content}>
           <MiniPost />
-          <MiniPost />
         </div>
       </main>
     </div>
