@@ -49,7 +49,7 @@ Este projecto foi desenvolvido com a intenção de aprofundar nos conceitos CRUD
 
 Este é um projeto desenvolvido durante os dias 1 a 13 de Setembro de 2021.
 
-Site disponivel na [Demo](https://moveit-delta-six.vercel.app/)
+Video disponivel na [Demo](https://www.linkedin.com/posts/danieljvsa_mais-um-projeto-conclu%C3%ADdo-desta-vez-foi-activity-6843226039276077056-eBSo)
 
 
 ## 📝 License
