@@ -36,7 +36,7 @@ $ npm install
 $ npm run dev
 ```
 
-````bash
+```bash
 $ cd backend
 $ npm install
 $ adonis serve --dev
