@@ -1,5 +1,5 @@
 <h1 align="center">
-  Move.it
+  Watto Blog
 </h1>
 
 <p align="center">
